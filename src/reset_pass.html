@@ -30,19 +30,20 @@
                 </div>
 
                 <div class="mt-8">
-                    <form>
+                    <form id="form">
                         <div>
                             <label for="password" class="block mb-2 text-sm text-gray-600 dark:text-gray-200">New Password</label>
-                            <input type="password" name="password" id="password" placeholder="Your Password" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" required />
+                            <input type="password" name="newPassword" id="newPassword" placeholder="New Password" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" required />
                         </div>
 
                         <div class="mt-6">
                             <label for="password" class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Confirm Password</label>
-                            <input type="password" name="password" id="password" placeholder="Your Password" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" required />
+                            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" required />
                         </div>
 
                         <div class="mt-6">
                             <button
+                                type="submit"
                                 id="confirmPasswordButton"
                                 class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                 Reset Password
@@ -50,8 +51,20 @@
                         </div>
 
                         <script>
-                            document.getElementById("confirmPasswordButton").addEventListener("click", function() {
+                            document.getElementById("form").addEventListener("submit", function(event) {
+                            event.preventDefault(); // Prevent the default form submit action
+                            // Add your validation logic here (if any)
+
+                            var newPassword = document.getElementById("newPassword").value;
+                            var confirmPassword = document.getElementById("confirmPassword").value;
+
+                            if (newPassword === confirmPassword) {
+                                // If the passwords match, redirect to the desired page
                                 window.location.href = "signin.html";
+                            } else {
+                                // If passwords don't match, alert the user
+                                alert("Passwords do not match. Please try again.");
+                            }
                             });
                         </script>
 
