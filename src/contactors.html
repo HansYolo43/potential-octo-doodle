@@ -45,9 +45,17 @@
 
             </div>
 
-            <button class="p-2 rounded-md text-gray-300 hover:bg-gray-700 focus:outline-none">
+            <button id="settingsButton"
+				class="p-2 rounded-md text-gray-300 hover:bg-gray-700 focus:outline-none">
+                <!-- Replace with settings icon SVG or image -->
                 ⚙️
             </button>
+
+			<script>
+				document.getElementById("settingsButton").addEventListener("click", function() {
+					window.location.href = "settings.html";
+				});
+			</script>
 
  
         </div>
